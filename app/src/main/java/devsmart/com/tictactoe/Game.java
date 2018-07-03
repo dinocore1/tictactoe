@@ -2,9 +2,14 @@ package devsmart.com.tictactoe;
 
 import com.google.common.base.Preconditions;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Game {
 
-
+    public interface Listener {
+        void onStateChanged();
+    }
 
     public enum State {
 
@@ -34,10 +39,19 @@ public class Game {
 
     public static final int DIM = 4;
     private final State[][] mSquares = new State[DIM][DIM];
+    private Set<Listener> mListeners = new HashSet<Listener>();
 
 
     public Game() {
         reset();
+    }
+
+    public void addListener(Listener l) {
+        mListeners.add(l);
+    }
+
+    public void removeListener(Listener l) {
+        mListeners.remove(l);
     }
 
     public void reset() {
@@ -46,12 +60,20 @@ public class Game {
                 mSquares[i][j] = State.Blank;
             }
         }
+
+        for(Listener l : mListeners) {
+            l.onStateChanged();
+        }
     }
 
     public void set(int x, int y, State state) {
         Preconditions.checkArgument(0 <= x && x < DIM, "x not in range");
         Preconditions.checkArgument(0 <= y && y < DIM, "y not in range");
         mSquares[x][y] = state;
+
+        for(Listener l : mListeners) {
+            l.onStateChanged();
+        }
     }
 
     public State get(int x, int y) {
