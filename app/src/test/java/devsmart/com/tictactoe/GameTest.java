@@ -67,7 +67,7 @@ public class GameTest {
 
         Game.WinningConfiguration winning = g.findWinner();
         assertNotNull(winning);
-        assertEquals(1, winning.player());
+        assertEquals(1, winning.player);
 
     }
 
@@ -81,7 +81,7 @@ public class GameTest {
 
         Game.WinningConfiguration winning = g.findWinner();
         assertNotNull(winning);
-        assertEquals(1, winning.player());
+        assertEquals(1, winning.player);
 
     }
 
@@ -96,7 +96,7 @@ public class GameTest {
 
         Game.WinningConfiguration winning = g.findWinner();
         assertNotNull(winning);
-        assertEquals(1, winning.player());
+        assertEquals(1, winning.player);
 
     }
 
@@ -110,7 +110,7 @@ public class GameTest {
 
         Game.WinningConfiguration winning = g.findWinner();
         assertNotNull(winning);
-        assertEquals(1, winning.player());
+        assertEquals(1, winning.player);
 
     }
 
@@ -124,7 +124,7 @@ public class GameTest {
 
         Game.WinningConfiguration winning = g.findWinner();
         assertNotNull(winning);
-        assertEquals(1, winning.player());
+        assertEquals(1, winning.player);
 
     }
 
@@ -146,7 +146,7 @@ public class GameTest {
                 fillBoxAt(g, i, j, Game.State.Player1);
                 Game.WinningConfiguration winning = g.findWinner();
                 assertNotNull(winning);
-                assertEquals(1, winning.player());
+                assertEquals(1, winning.player);
 
             }
         }
